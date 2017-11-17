@@ -1,0 +1,26 @@
+{
+   "background": {
+      "scripts": [ "popup.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "api": [ "devtools", "tabs" ],
+      "explicit_host": [ "\u003Call_urls>" ],
+      "js": [ "popup.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "scriptable_host": [ "http://*/*", "https://*/*" ]
+   } ],
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://translate.google.com https://query.yahooapis.com; object-src 'self'",
+   "description": "__MSG_extDescription__",
+   "manifest_version": 2,
+   "name": "__MSG_extName__",
+   "permissions": [ "http://tiny4.com/*", "http://imtranslator.net/*", "http://*/*", "https://*/*", "tabs", "contextMenus", "webRequestBlocking", "unlimitedStorage" ],
+   "short_name": "ImTranslator",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "11.16",
+   "web_accessible_resources": [ "content/html/options/options.html", "content/html/popup/translator.html", "content/html/popup/dictionary.html", "content/html/options/history.html", "content/html/options/options-bbl.html", "content/html/options/feedback.html", "content/img/util/settingsb.png", "content/img/util/bfeedback.png", "content/img/util/bhelp.png", "content/img/util/delete.png", "content/img/util/arrow.png", "content/img/util/bg.png", "content/img/util/bg2.png", "content/img/util/bg3.png", "content/img/util/imtranslator-s.png", "content/img/util/indicator.gif", "content/img/util/copy.png", "content/img/util/tts.png", "content/img/util/tts-voice.png", "content/img/util/ttsvoice.png", "content/img/util/font-on.png", "content/img/util/select.png", "content/img/util/font.png", "content/img/util/pin-on.png", "content/img/util/pin-off.png", "content/img/util/donate.png", "content/img/util/bhistory.png", "content/img/util/switchb.png", "content/img/util/loading.gif", "content/img/util/up.png", "content/img/util/down.png", "content/img/util/bbl-logo.png" ]
+}

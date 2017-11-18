@@ -1,7 +1,24 @@
 document.getElementById('submit').addEventListener("click", function(event) {
   const word = document.getElementById('wiktsearchtext').value;
+  const url = "https://hy.wiktionary.org/w/api.php?";
 
-  jQuery('#output').html(processDataFromWiktionary(word).output)
+  $.getJSON(url, {
+    "action": "parse",
+    "format": "json",
+    "page": word,
+    "prop": "text|categories|links|externallinks|sections",
+    "wrapoutputclass": "mw-parser-output",
+    "disablelimitreport": 1,
+    "disableeditsection": 1,
+    "disabletoc": 1
+  }, function(data) {
+    
+    const el = document.createElement( 'html' );
+    el.innerHTML = data.parse.text["*"];
+    const dataWithoutLinks = data.parse.text["*"].replace(/<a [^>]+>([\s\S]*?)(?=<\/a>)<\/a>/gi, '$1');
+
+    $('#output').html();
+  }); 
 
   document.getElementById('wiktsearchtext').value = "";
   event.preventDefault();

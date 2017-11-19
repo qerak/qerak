@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "HyText",
+    "name": "ՀայՏեքստ",
     "version": "1.0",
 
     "description": "Մենք կօգնենք ավելի անսխալ գրել",
@@ -9,16 +9,18 @@
         "default_popup": "popup.html"
     },
 
-    "author": ["Ashot Janibekyan", "Elen Gabrielyan", "Marianna Perikhanyan", "Rozi Tunyan"],
+    "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
 
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["background.js", "processDataFromWiktionary.js", "jquery-3.2.1.min.js"],
         "persistent": false
     },
     "content_scripts": [{
         "all_frames": true,
         "js": ["randerData.js"],
-        "matches":  ["http://*/*", "https://*/*"]
+        "css": ["styles.css"],
+        "matches":  ["http://*/*", "https://*/*"],
+        "run_at": "document_end"
     }],
     "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://hy.wiktionary.org https://translate.google.com https://query.yahooapis.com; object-src 'self'",
     "permissions": [
@@ -26,9 +28,7 @@
         "http://*/*",
         "https://*/*",
         "tabs",
-        "contextMenus",
-        "webRequestBlocking",
-        "unlimitedStorage"
+        "contextMenus"
     ],
-    "short_name": "ImTranslator"
+    "short_name": "HyText"
 }

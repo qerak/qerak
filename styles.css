@@ -1,0 +1,13 @@
+#HyText-tooltip-wrap {
+    background: rgba(202, 181, 181, 0.8);
+    overflow: auto;
+    position: absolute;
+    z-index: 1000000131;
+    font-family: Tahoma, Arial, Ubuntu !important;
+    font-size: 13px !important;
+    line-height: normal !important;
+    max-width: 500px; 
+    max-height: 400px;
+    min-width: 250px;
+    min-height: 200px;
+}

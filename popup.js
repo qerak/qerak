@@ -15,9 +15,13 @@ document.getElementById('submit').addEventListener("click", function(event) {
     
     const el = document.createElement( 'html' );
     el.innerHTML = data.parse.text["*"];
-    const dataWithoutLinks = data.parse.text["*"].replace(/<a [^>]+>([\s\S]*?)(?=<\/a>)<\/a>/gi, '$1');
+    const basicReplacments = data.parse.text["*"].replace(/<a [^>]+>([\s\S]*?)(?=<\/a>)<\/a>/gi, '$1')
+                                                  .replace()
+                                                  .replace()
+                                                  .replace()
 
-    $('#output').html();
+    $('#output').html(basicReplacments);
+    
   }); 
 
   document.getElementById('wiktsearchtext').value = "";

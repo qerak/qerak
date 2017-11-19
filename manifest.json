@@ -5,20 +5,23 @@
 
     "description": "Մենք կօգնենք ավելի անսխալ գրել",
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": "resources/icon.png",
         "default_popup": "popup.html"
     },
 
     "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
 
     "background": {
-        "scripts": ["background.js", "processDataFromWiktionary.js", "jquery-3.2.1.min.js"],
+        "scripts": [
+            "src/background/background.js",
+            "src/background/processDataFromWiktionary.js",
+            "libs/jquery-3.2.1.min.js"],
         "persistent": false
     },
     "content_scripts": [{
         "all_frames": true,
-        "js": ["randerData.js"],
-        "css": ["styles.css"],
+        "js": ["src/content/randerData.js"],
+        "css": ["styles/styles.css"],
         "matches":  ["http://*/*", "https://*/*"],
         "run_at": "document_end"
     }],

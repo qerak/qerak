@@ -1,6 +1,7 @@
 function processDataFromWiktionary(word, callback) {
     const url = "https://hy.wiktionary.org/w/api.php?";
     let processedData = "Ցավոք չհաջողվեց որևէ բան գտնել ։/";
+    word = word.replace(/ությանը?$/, 'ություն');
     $.getJSON(url, {
         "action": "parse",
         "format": "json",

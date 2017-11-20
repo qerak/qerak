@@ -13,9 +13,12 @@
 
     "background": {
         "scripts": [
+            "dictionary/dictionary.js",
+            "libs/jquery-3.2.1.min.js",
             "src/background/background.js",
             "src/background/processDataFromWiktionary.js",
-            "libs/jquery-3.2.1.min.js"],
+            "src/background/findRootWord.js"
+        ],
         "persistent": false
     },
     "content_scripts": [{

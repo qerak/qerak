@@ -1,7 +1,10 @@
 function processDataFromWiktionary(word, callback) {
     const url = "https://hy.wiktionary.org/w/api.php?";
     let processedData = "Ցավոք չհաջողվեց որևէ բան գտնել ։/";
-    word = word.replace(/ությանը?$/, 'ություն');
+    const t0 = performance.now();
+    word = findRootWord(word);
+    const t1 = performance.now();
+    console.log("Call to findRootWord took " + (t1 - t0) + " milliseconds.")
     $.getJSON(url, {
         "action": "parse",
         "format": "json",

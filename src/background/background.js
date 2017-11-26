@@ -12,6 +12,6 @@ chrome.contextMenus.onClicked.addListener(function(clickedData) {
             chrome.tabs.sendMessage(tabs[0].id, processedData, function(response) {
                 //TODO
             });
-        })
+        });
     });
-})
+});

@@ -1,8 +1,8 @@
 const boxTemplate = '<div id="HyText-tooltip-wrap" style="left: {{{X}}}px; top: {{{Y}}}px;">{{{TEXT}}}</div>';
 const getSelectionCoords = function() {
-    let sel = window.document.selection
+    let sel = window.document.selection;
     let range;
-    let rects
+    let rects;
     let rect;
     let x = 0;
     let y = 0;
@@ -41,10 +41,10 @@ const getSelectionCoords = function() {
             }
         }
     }
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return { x: x + scrollLeft, y: y + scrollTop};
-}
+};
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
@@ -56,7 +56,6 @@ chrome.runtime.onMessage.addListener(
             const nodeToInsert = parser.parseFromString(formatedBox, "text/html");
             document.getElementsByTagName("body")[0].appendChild(nodeToInsert.getElementById('HyText-tooltip-wrap'));
         }
-        sendResponse(document);
     });
 
 document.addEventListener('click', function(e) {
@@ -72,4 +71,4 @@ document.addEventListener('click', function(e) {
             document.getElementById('HyText-tooltip-wrap').outerHTML = "";
         }
     }
-})
+});

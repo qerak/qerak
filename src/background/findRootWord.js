@@ -1,35 +1,33 @@
 const findRootWord = function(word) {
-    if(dictionary[word] === null) {
-        return word;
-    }
-    //ուղղական հոլով
-    if(dictionary[word.replace(/ն$/, '')] === null) {
-        return dictionary[word.replace(/ն$/, '')]
-    }
-    if(dictionary[word.replace(/ը$/, '')] === null) {
-        return dictionary[word.replace(/ը$/, '')]
-    }
-
-    //սեռական հոլով
-    if(dictionary[word.replace(/ի$/, '')] === null) {
-        return dictionary[word.replace(/ի$/, '')]
-    }
-    if(dictionary[word.replace(/ու$/, '')] === null) {
-        return dictionary[word.replace(/ու$/, '')]
-    }
-    if(dictionary[word.replace(/վա$/, '')] === null) {
-        return dictionary[word.replace(/վա$/, '')]
-    }
-    if(dictionary[word.replace(/ոջ$/, '')] === null) {
-        return dictionary[word.replace(/ոջ$/, '')]
-    }
-    if(dictionary[word.replace(/ց$/, '')] === null) {
-        return dictionary[word.replace(/ց$/, '')]
-    }
-    if(dictionary[word.replace(/ան$/, '')] === null) {
-        return dictionary[word.replace(/ան$/, '')]
-    }
+    word = word.replace(/ $/, '');
+    const _case = function(word) {
+        if(dictionary[word] === null) {
+            return word;
+        }
+        if(dictionary[word.replace(/ու$/, 'ի')] === null) {
+            return word.replace(/ու$/, 'ի');
+        }
+        /* 
+            Փորձում ենք տառ-տառ հանել և փորձել, մինչև որոնելի բառը գտնելը,
+            շատ դեպքերում գործընթացը կհեշտացնի (երկար if-եր գրելու կարիք չի լինի,
+            մեզ կմնա ներքին հոլովների հարցը)
+        */
+        for(let i = word.length - 1; i > 2; i--) {
+            if(dictionary[word.substring(0, i)] === null) {
+                return word.substring(0, i);
+            }
+        }
     
-    word = word.replace(/ության$/, 'ություն');
+        word = word.replace(/ության$/, 'ություն');
+        return word;
+    };
+
+    if (_case(word.charAt(0).toLowerCase() + word.slice(1))) {
+        return _case(word.charAt(0).toLowerCase() + word.slice(1));
+    } else if(_case(word.charAt(0).toUpperCase() + word.slice(1))) {
+        return _case(word.charAt(0).toUpperCase() + word.slice(1));
+    } else if (_case(word.toUpperCase())) {
+        return _case(word.toUpperCase());
+    }
     return word;
 };

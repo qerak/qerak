@@ -22,7 +22,7 @@
         "persistent": false
     },
     "content_scripts": [{
-        "all_frames": true,
+        "all_frames": false,
         "js": ["src/content/randerData.js"],
         "css": ["styles/styles.css"],
         "matches":  ["http://*/*", "https://*/*"],

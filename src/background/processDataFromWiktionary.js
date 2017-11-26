@@ -15,7 +15,7 @@ function processDataFromWiktionary(word, callback) {
         if(!data.error) {
             const el = document.createElement( 'html' );
             el.innerHTML = data.parse.text["*"];
-            const basicReplacments = data.parse.text["*"];
+            const basicReplacments = data.parse.text["*"].replace(/(<a href *= *"?)\/wiki\//g, '$1https://hy.wiktionary.org/wiki/');
             processedData = basicReplacments;
         }
         callback(processedData);

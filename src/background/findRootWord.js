@@ -4,6 +4,7 @@ const findRootWord = function(word) {
         if(dictionary[word] === null) {
             return word;
         }
+        word = word.replace(/ության$/, 'ություն');
         if(dictionary[word.replace(/ու$/, 'ի')] === null) {
             return word.replace(/ու$/, 'ի');
         }
@@ -17,8 +18,6 @@ const findRootWord = function(word) {
                 return word.substring(0, i);
             }
         }
-    
-        word = word.replace(/ության$/, 'ություն');
         return word;
     };
 

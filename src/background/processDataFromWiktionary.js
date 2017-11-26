@@ -13,10 +13,18 @@ function processDataFromWiktionary(word, callback) {
         "disabletoc": 1
     }, function(data) {
         if(!data.error) {
-            const el = document.createElement( 'html' );
-            el.innerHTML = data.parse.text["*"];
-            const basicReplacments = data.parse.text["*"].replace(/(<a href *= *"?)\/wiki\//g, '$1https://hy.wiktionary.org/wiki/');
-            processedData = basicReplacments;
+            const basicReplacments = data.parse.text["*"].replace(/(<a href *= *"?)\/wiki\//g, '$1https://hy.wiktionary.org/wiki/')
+                                    .replace(/<h(\d)>.+?(?=<\/h\1>)<\/h\1>\s*<h\1/g, '<h$1');
+            const itemDocument = document.implementation.createHTMLDocument('Wiktionary');
+            itemDocument.body.innerHTML = basicReplacments;
+            
+            for(let i = 0; i < itemDocument.getElementsByTagName('*').length; i++) {
+                if(/^\s*$/.test(itemDocument.getElementsByTagName('*')[i].textContent)) {
+                    itemDocument.getElementsByTagName('*')[i].parentNode.removeChild(itemDocument.getElementsByTagName('*')[i]);
+                    i = i - 1;
+                }
+            }
+            processedData = itemDocument.body.innerHTML;
         }
         callback(processedData);
     });

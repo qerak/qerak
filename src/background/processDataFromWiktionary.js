@@ -8,6 +8,7 @@ function processDataFromWiktionary(word, callback) {
         "page": word,
         "prop": "text|categories|links|externallinks|sections",
         "wrapoutputclass": "mw-parser-output",
+        "redirects": true,
         "disablelimitreport": 1,
         "disableeditsection": 1,
         "disabletoc": 1

@@ -12,11 +12,12 @@
     min-height: 200px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 60px 200px 0 rgba(0, 0, 0, 0.19);
     padding: 10px 10px 10px 10px;
+    border-radius: 10px;
 }
 
 /* width */
 #HyText-tooltip-wrap::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
 }
 
 /* Track */

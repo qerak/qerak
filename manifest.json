@@ -1,40 +1,49 @@
 {
-    "manifest_version": 2,
-    "name": "ՀայՏեքստ",
-    "version": "1.0",
+  "manifest_version": 2,
+  "name": "Քերակ",
+  "version": "1.0",
 
-    "description": "Մենք կօգնենք ավելի անսխալ գրել",
-    "browser_action": {
-        "default_icon": "resources/icon.png",
-        "default_popup": "popup.html"
-    },
+  "description": "Քերակի օգնությամբ դուք կարող եք հեշտությամբ իմանալ հայերեն բառերի մասին տեղեկություններ և ոչ միայն",
+  "browser_action": {
+    "default_icon": "resources/icon.png",
+    "default_popup": "popup.html"
+  },
 
-    "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
+  "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
 
-    "background": {
-        "scripts": [
-            "dictionary/dictionary.js",
-            "libs/jquery-3.2.1.min.js",
-            "src/background/background.js",
-            "src/background/processDataFromWiktionary.js",
-            "src/background/findRootWord.js"
-        ],
-        "persistent": false
-    },
-    "content_scripts": [{
-        "all_frames": false,
-        "js": ["src/content/randerData.js"],
-        "css": ["styles/styles.css"],
-        "matches":  ["http://*/*", "https://*/*"],
-        "run_at": "document_end"
+  "background": {
+    "scripts": [
+      "dictionary/dictionary.js",
+      "libs/jquery-3.2.1.min.js",
+      "src/background/background.js",
+      "src/background/processDataFromWiktionary.js",
+      "src/background/findRootWord.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "all_frames": false,
+    "js": ["src/content/randerData.js", "src/content/armenianKeyboard.js" ],
+    "css": ["styles/styles.css"],
+    "matches":  ["http://*/*", "https://*/*"],
+    "run_at": "document_end"
     }],
+    "commands": {
+      "toggleHyKeys": {
+        "description": "Միացնել հայերեն ստեղնաշարը",
+        "suggested_key": {
+          "default": "Alt+H",
+          "mac": "MacCtrl+H"
+        }
+      }
+    },
     "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://hy.wiktionary.org https://translate.google.com https://query.yahooapis.com; object-src 'self'",
     "permissions": [
-        "https://hy.wiktionary.org/*",
-        "http://*/*",
-        "https://*/*",
-        "tabs",
-        "contextMenus"
-    ],
-    "short_name": "HyText"
-}
+      "https://hy.wiktionary.org/*",
+      "http://*/*",
+      "https://*/*",
+      "tabs",
+      "contextMenus",
+      "storage"
+    ]
+  }

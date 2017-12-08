@@ -1,5 +1,16 @@
 const findRootWord = function(word) {
-  word = word.replace(/ $/, '');
+  word = word.replace(/ +$/, '');
+  word = word.replace(/^ +/, '');
+
+  const _cases = function(word, f) {
+    if(f(word.charAt(0).toUpperCase() + word.slice(1))) {
+      return f(word.charAt(0).toUpperCase() + word.slice(1));
+    } else if (f(word.charAt(0).toLowerCase() + word.slice(1))) {
+      return f(word.charAt(0).toLowerCase() + word.slice(1));
+    } else if (f(word.toUpperCase())) {
+      return f(word.toUpperCase());
+    }
+  };
   const exaptions = function(word) {
     /*
     Այս ֆունկցիան պետք է ստուգի բավառիկ դեպքերը։ Քանի որ այս ֆունկցիան մեծ մասմաբ գուշակելու փոխարեն պարզապես գիտի
@@ -27,7 +38,7 @@ const findRootWord = function(word) {
     // .replace('լեզվի', 'լեզու') աղջիկ-աղջկա, սեր-սիրո, դուստր-դստեր, Աստված բառը՝ Աստծո
   };
 
-  const _case = function(word) {
+  const simpleRepls = function(word) {
     if(dictionary[word] === null) {
       return word;
     }
@@ -43,6 +54,12 @@ const findRootWord = function(word) {
 
   };
 
+  const tryWithoutPunct = function(word) {
+    if(dictionary[word.replace(/[,՝՛՞`']/, '')]=== null) {
+      return word.replace(/[,՝՛՞`']/, '');
+    }
+  }
+
   const tryWithouLast = function(word) {
     /*
     Փորձում ենք տառ-տառ հանել և փորձել, մինչև որոնելի բառը գտնելը,
@@ -55,20 +72,18 @@ const findRootWord = function(word) {
       }
     }
   };
-  if(exaptions(word)) {
-    return exaptions(word);
-  } else if(_case(word.charAt(0).toUpperCase() + word.slice(1))) {
-    return _case(word.charAt(0).toUpperCase() + word.slice(1));
-  } else if (_case(word.charAt(0).toLowerCase() + word.slice(1))) {
-    return _case(word.charAt(0).toLowerCase() + word.slice(1));
-  } else if (_case(word.toUpperCase())) {
-    return _case(word.toUpperCase());
-  } else if(tryWithouLast(word.charAt(0).toUpperCase() + word.slice(1))) {
-    return tryWithouLast(word.charAt(0).toUpperCase() + word.slice(1));
-  } else if (tryWithouLast(word.charAt(0).toLowerCase() + word.slice(1))) {
-    return tryWithouLast(word.charAt(0).toLowerCase() + word.slice(1));
-  } else if (tryWithouLast(word.toUpperCase())) {
-    return tryWithouLast(word.toUpperCase());
+
+  if(_cases(word, tryWithoutPunct)) {
+    return _cases(word, tryWithoutPunct);
+  }
+  if(_cases(word, exaptions)) {
+    return _cases(word, exaptions);
+  }
+  if(_cases(word, simpleRepls)) {
+    return _cases(word, simpleRepls);
+  }
+  if(_cases(word, tryWithouLast)) {
+    return _cases(word, tryWithouLast);
   }
   return word;
 };

@@ -36,11 +36,21 @@ const hyToEnMap = {
   "3": ["փ", "Փ"],
   "4": ["ձ", "Ձ"],
   "5": ["ջ", "Ջ"],
-  "6": ["(", ")"],
+  "6": ["ւ", "Ւ"],
   "7": ["և", "և"],
   "8": ["ր", "Ր"],
   "9": ["չ", "Չ"],
   "0": ["ճ", "Ճ"],
+  "!": "Է",
+  "@": "Թ",
+  "#": "Փ",
+  "$": "Ձ",
+  "%": "Ջ",
+  "^": "Ւ",
+  "&": "և",
+  "*": "Ր",
+  "(": "Չ",
+  ")": "Ճ",
   "`": "՝",
   "-": "-",
   "=": "ժ",
@@ -52,7 +62,7 @@ const hyToEnMap = {
   ",": ",",
   ".": ".",
   "/": "/",
-  "~": "՜", //unfortunately we should do this, since "<".toLowerCase() !== ,
+  "~": "՜",
   "_": "—",
   "+": "Ժ",
   "{": "Խ",
@@ -70,7 +80,7 @@ const hyToEnMap = {
       j = 1;
     } else {
       j = 0;
-    }
+    } 
     for(let i = 0; i < text.length; i++) {
       if(typeof this[text[i]] === "string") {
         result += this[text[i]][0];
@@ -139,18 +149,24 @@ const setValue = function(target, value){
 
 const inputEventHandler = function(e) {
   const value = getValue(e.target);
+  //START: cases to skip
   if (value === null) {
-    return
+    return;
   };
 
   const end = getCaret(e.target);
   if (end === null){
-    return
+    return;
   };
-  let start = Math.max(end - 3, 0);
+
+  if(e.inputType === "insertFromPaste" || e.inputType === "deleteContentForward" || e.inputType === "deleteContentBackward") {
+    return;
+  }
+  //END: cases to skip
+  let start = Math.max(end - 9, 0);
 
   for (let i = end - 1; i >= start; --i){
-    if (!/[\dA-z`~\-_=\+\)\(\\\|\]\[\{\}"':;<>,\.\/\?]/.test(value[i])) {
+    if (!/[\dA-z`~\-_=!@#$%\^\&\*\+\)\(\\\|\]\[\{\}"':;<>,\.\/\?]/.test(value[i])) {
       start = i + 1;
       break;
     }

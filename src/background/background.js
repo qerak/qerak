@@ -23,3 +23,18 @@ chrome.commands.onCommand.addListener(function(command) {
     });
   }
 });
+
+
+chrome.storage.local.get('isArmenian', function(item){
+  if(item.isArmenian) {
+    chrome.browserAction.setBadgeText({
+      text: "HY"
+    });
+  }
+});
+
+chrome.storage.onChanged.addListener(function(changes) {
+  chrome.browserAction.setBadgeText({
+    text: (changes['isArmenian'].newValue) ? "HY" : ""
+  });
+});

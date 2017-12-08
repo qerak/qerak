@@ -25,6 +25,7 @@ function processDataFromWiktionary(word, callback) {
           i = i - 1;
         }
       }
+      itemDocument.getElementById('Հայերեն').innerText = word;
       processedData = itemDocument.body.innerHTML;
     }
     callback(processedData);

@@ -4,75 +4,78 @@ document.addEventListener('keydown', function(event) {
   isCapsLock = event.getModifierState && event.getModifierState("CapsLock");
   isShiftPressed = event.getModifierState && event.getModifierState("Shift");
 });
-const hyToEnMap = {
-  "a": ["ա", "Ա"],
-  "b": ["բ", "Բ"],
-  "c": ["ց", "Ց"],
-  "d": ["դ", "Դ"],
-  "e": ["ե", "Ե"],
-  "f": ["ֆ", "Ֆ"],
-  "g": ["գ", "Գ"],
-  "h": ["հ", "Հ"],
-  "i": ["ի", "Ի"],
-  "j": ["յ", "Յ"],
-  "k": ["կ", "Կ"],
-  "l": ["լ", "Լ"],
-  "m": ["մ", "Մ"],
-  "n": ["ն", "Ն"],
-  "o": ["օ", "Օ"],
-  "p": ["պ", "Պ"],
-  "q": ["ք", "Ք"],
-  "r": ["ռ", "Ռ"],
-  "s": ["ս", "Ս"],
-  "t": ["տ", "Տ"],
-  "u": ["ւ", "Ւ"],
-  "v": ["վ", "Վ"],
-  "w": ["ո", "Ո"],
-  "x": ["ղ", "Ղ"],
-  "y": ["ը", "Ը"],
-  "z": ["զ", "Զ"],
-  "1": ["է", "Է"],
-  "2": ["թ", "Թ"],
-  "3": ["փ", "Փ"],
-  "4": ["ձ", "Ձ"],
-  "5": ["ջ", "Ջ"],
-  "6": ["ւ", "Ւ"],
-  "7": ["և", "և"],
-  "8": ["ր", "Ր"],
-  "9": ["չ", "Չ"],
-  "0": ["ճ", "Ճ"],
-  "!": "Է",
-  "@": "Թ",
-  "#": "Փ",
-  "$": "Ձ",
-  "%": "Ջ",
-  "^": "Ւ",
-  "&": "և",
-  "*": "Ր",
-  "(": "Չ",
-  ")": "Ճ",
-  "`": "՝",
-  "-": "-",
-  "=": "ժ",
-  "[": "խ",
-  "]": "ծ",
-  "\\": "շ",
-  ";": "․",
-  "'": "՛",
-  ",": ",",
-  ".": ".",
-  "/": "/",
-  "~": "՜",
-  "_": "—",
-  "+": "Ժ",
-  "{": "Խ",
-  "}": "Ծ",
-  "|": "Շ",
-  ":": "։",
-  "\"": "՚",
-  "<": "«",
-  ">": "»",
-  "?": "՞",
+
+const enToHy = {
+  map: {
+    "a": ["ա", "Ա"],
+    "b": ["բ", "Բ"],
+    "c": ["ց", "Ց"],
+    "d": ["դ", "Դ"],
+    "e": ["ե", "Ե"],
+    "f": ["ֆ", "Ֆ"],
+    "g": ["գ", "Գ"],
+    "h": ["հ", "Հ"],
+    "i": ["ի", "Ի"],
+    "j": ["յ", "Յ"],
+    "k": ["կ", "Կ"],
+    "l": ["լ", "Լ"],
+    "m": ["մ", "Մ"],
+    "n": ["ն", "Ն"],
+    "o": ["օ", "Օ"],
+    "p": ["պ", "Պ"],
+    "q": ["ք", "Ք"],
+    "r": ["ռ", "Ռ"],
+    "s": ["ս", "Ս"],
+    "t": ["տ", "Տ"],
+    "u": ["ւ", "Ւ"],
+    "v": ["վ", "Վ"],
+    "w": ["ո", "Ո"],
+    "x": ["ղ", "Ղ"],
+    "y": ["ը", "Ը"],
+    "z": ["զ", "Զ"],
+    "1": ["է", "Է"],
+    "2": ["թ", "Թ"],
+    "3": ["փ", "Փ"],
+    "4": ["ձ", "Ձ"],
+    "5": ["ջ", "Ջ"],
+    "6": ["ւ", "Ւ"],
+    "7": ["և", "և"],
+    "8": ["ր", "Ր"],
+    "9": ["չ", "Չ"],
+    "0": ["ճ", "Ճ"],
+    "!": "Է",
+    "@": "Թ",
+    "#": "Փ",
+    "$": "Ձ",
+    "%": "Ջ",
+    "^": "Ւ",
+    "&": "և",
+    "*": "Ր",
+    "(": "Չ",
+    ")": "Ճ",
+    "`": "՝",
+    "-": "-",
+    "=": "ժ",
+    "[": "խ",
+    "]": "ծ",
+    "\\": "շ",
+    ";": "․",
+    "'": "՛",
+    ",": ",",
+    ".": ".",
+    "/": "/",
+    "~": "՜",
+    "_": "—",
+    "+": "Ժ",
+    "{": "Խ",
+    "}": "Ծ",
+    "|": "Շ",
+    ":": "։",
+    "\"": "՚",
+    "<": "«",
+    ">": "»",
+    "?": "՞"
+  },
   convert: function(text) {
     let result = "";
     let j;
@@ -82,10 +85,10 @@ const hyToEnMap = {
       j = 0;
     } 
     for(let i = 0; i < text.length; i++) {
-      if(typeof this[text[i]] === "string") {
-        result += this[text[i]][0];
-      } else if(this[text[i].toLowerCase()]) {
-        result += this[text[i].toLowerCase()][j];
+      if(typeof this["map"][text[i]] === "string") {
+        result += this["map"][text[i]][0];
+      } else if(this["map"][text[i].toLowerCase()]) {
+        result += this["map"][text[i].toLowerCase()][j];
       }
     }
     if(result === "") {
@@ -96,6 +99,11 @@ const hyToEnMap = {
   }
 }
 
+chrome.storage.local.get("enToHyMap", function(obj) {
+  if(obj.length !== 0) {
+    enToHy.map = JSON.parse(obj["enToHyMap"]);
+  }
+});
 const isContentEditable = function (target) {
   return target.contentEditable === "true";
 }
@@ -173,7 +181,7 @@ const inputEventHandler = function(e) {
   }
   const text = value.substring(start, end);
 
-  const converted = hyToEnMap.convert(text);
+  const converted = enToHy.convert(text);
 
   setValue(e.target, value.substring(0, start) + converted + value.substring(end));
   setCaret(e.target, end - text.length + converted.length);

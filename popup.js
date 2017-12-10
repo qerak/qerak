@@ -8,12 +8,10 @@ chrome.storage.onChanged.addListener(function(changes) {
   document.getElementById('isArmenian').checked = changes['isArmenian'].newValue;
 });
 
-document.getElementById('submit').addEventListener("click", function(event) {
-  const word = document.getElementById('wiktsearchtext').value;
-
-  
-
-  document.getElementById('wiktsearchtext').value = "";
+document.getElementById('form').addEventListener("submit", function(event) {
+  processDataFromWiktionary(document.getElementById('wiktsearchtext').value, function(data) {
+    document.getElementById('output').innerHTML = data;
+  });
   event.preventDefault();
 });
 

@@ -1,0 +1,155 @@
+<html>    
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Կարգավորումներ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 71%/1.5 Verdana, Sans-Serif;
+            background: #eee;
+        }
+
+        #container {
+            margin: 100px auto;
+            width: 688px;
+        }
+
+        #keyboard {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #keyboard li {
+            float: left;
+            margin: 0 5px 5px 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #f9f9f9;
+        }
+
+        .capslock,
+        .tab,
+        .left-shift {
+            clear: left;
+        }
+
+        #keyboard .tab,
+        #keyboard .delete {
+            width: 70px;
+        }
+
+        #keyboard .capslock {
+            width: 80px;
+        }
+
+        #keyboard .return {
+            width: 77px;
+        }
+
+        #keyboard .left-shift {
+            width: 95px;
+        }
+
+        #keyboard .right-shift {
+            width: 109px;
+        }
+
+        .lastitem {
+            margin-right: 0;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        #keyboard .space {
+            clear: left;
+            width: 681px;
+        }
+
+        .on {
+            display: none;
+        }
+
+        #keyboard li:hover {
+            position: relative;
+            top: 1px;
+            left: 1px;
+            border-color: #e5e5e5;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <ul id="keyboard">
+            <li class="symbol"><span contenteditable="true" class="off key" id="`">`</span><span contenteditable="true" class="on key" id="~">~</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="1">1</span><span contenteditable="true" class="on key" id="!">!</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="2">2</span><span contenteditable="true" class="on key" id="@">@</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="3">3</span><span contenteditable="true" class="on key" id="#">#</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="4">4</span><span contenteditable="true" class="on key" id="$">$</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="5">5</span><span contenteditable="true" class="on key" id="%">%</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="6">6</span><span contenteditable="true" class="on key" id="^">^</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="7">7</span><span contenteditable="true" class="on key" id="&amp;">&amp;</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="8">8</span><span contenteditable="true" class="on key" id="*">*</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="9">9</span><span contenteditable="true" class="on key" id="(">(</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="0">0</span><span contenteditable="true" class="on key" id=")">)</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="-">-</span><span contenteditable="true" class="on key" id="_">_</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="=">=</span><span contenteditable="true" class="on key" id="+">+</span></li>
+            <li class="delete lastitem">delete</li>
+            <li class="tab">tab</li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="q">q</span><span contenteditable="true" class="on key" id="Q">Q</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="w">w</span><span contenteditable="true" class="on key" id="W">W</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="e">e</span><span contenteditable="true" class="on key" id="E">E</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="r">r</span><span contenteditable="true" class="on key" id="R">R</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="t">t</span><span contenteditable="true" class="on key" id="T">T</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="y">y</span><span contenteditable="true" class="on key" id="Y">Y</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="u">u</span><span contenteditable="true" class="on key" id="U">U</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="i">i</span><span contenteditable="true" class="on key" id="I">I</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="o">o</span><span contenteditable="true" class="on key" id="O">O</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="p">p</span><span contenteditable="true" class="on key" id="P">P</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="[">[</span><span contenteditable="true" class="on key" id="{">{</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="]">]</span><span contenteditable="true" class="on key" id="}">}</span></li>
+            <li class="symbol lastitem"><span contenteditable="true" class="off key" id="\">\</span><span contenteditable="true" class="on key" id="|">|</span></li>
+            <li class="capslock">caps lock</li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="a">a</span><span contenteditable="true" class="on key" id="A">A</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="s">s</span><span contenteditable="true" class="on key" id="S">S</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="d">d</span><span contenteditable="true" class="on key" id="D">D</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="f">f</span><span contenteditable="true" class="on key" id="F">F</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="g">g</span><span contenteditable="true" class="on key" id="G">G</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="h">h</span><span contenteditable="true" class="on key" id="H">H</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="j">j</span><span contenteditable="true" class="on key" id="J">J</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="k">k</span><span contenteditable="true" class="on key" id="K">K</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="l">l</span><span contenteditable="true" class="on key" id="L">L</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id=";">;</span><span contenteditable="true" class="on key" id=":">:</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="'">'</span><span contenteditable="true" class="on key" id="&quot;">&quot;</span></li>
+            <li class="return lastitem">return</li>
+            <li class="left-shift">shift</li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="z">z</span><span contenteditable="true" class="on key" id="Z">Z</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="x">x</span><span contenteditable="true" class="on key" id="X">X</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="c">c</span><span contenteditable="true" class="on key" id="C">C</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="v">v</span><span contenteditable="true" class="on key" id="V">V</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="b">b</span><span contenteditable="true" class="on key" id="B">B</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="n">n</span><span contenteditable="true" class="on key" id="N">N</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="m">m</span><span contenteditable="true" class="on key" id="M">M</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id=",">,</span><span contenteditable="true" class="on key" id="&lt;">&lt;</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id=".">.</span><span contenteditable="true" class="on key" id="&gt;">&gt;</span></li>
+            <li class="symbol"><span contenteditable="true" class="off key" id="/">/</span><span contenteditable="true" class="on key" id="?">?</span></li>
+            <li class="right-shift lastitem">shift</li>
+            <li class="space lastitem" id="saveKeyboard">Հիշել փոփոխությունները</li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="src/options.js"></script>
+</body>
+</html>

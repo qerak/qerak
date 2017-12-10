@@ -9,6 +9,7 @@
     "default_popup": "popup.html"
   },
 
+  "options_page": "options.html",
   "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
 
   "background": {

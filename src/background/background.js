@@ -3,8 +3,8 @@ const contextMenuItem = {
   "title": "Դիտել բառի բացատրությունը",
   "contexts": ["selection"]
 };
-// chrome.runtime.onInstalled.addListener(function(details) {
-//   if(details.reason == "install"){
+chrome.runtime.onInstalled.addListener(function(details) {
+  if(details.reason == "install"){
     chrome.storage.local.set({"enToHyMap": JSON.stringify({
       "a": ["ա", "Ա"],
       "b": ["բ", "Բ"],
@@ -75,8 +75,8 @@ const contextMenuItem = {
       ">": "»",
       "?": "՞"
     })})
-//   }
-// });
+  }
+});
 chrome.contextMenus.create(contextMenuItem);
 
 chrome.contextMenus.onClicked.addListener(function(clickedData) {
@@ -96,7 +96,6 @@ chrome.commands.onCommand.addListener(function(command) {
     });
   }
 });
-
 
 chrome.storage.local.get('isArmenian', function(item){
   if(item.isArmenian) {

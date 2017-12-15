@@ -156,6 +156,11 @@ const setValue = function(target, value){
 }
 
 const inputEventHandler = function(e) {
+  
+  if(e.inputType === "insertFromPaste" || e.inputType === "deleteContentForward" || e.inputType === "deleteContentBackward") {
+    return;
+  }
+  
   const value = getValue(e.target);
   //START: cases to skip
   if (value === null) {
@@ -166,12 +171,8 @@ const inputEventHandler = function(e) {
   if (end === null){
     return;
   };
-
-  if(e.inputType === "insertFromPaste" || e.inputType === "deleteContentForward" || e.inputType === "deleteContentBackward") {
-    return;
-  }
   //END: cases to skip
-  let start = Math.max(end - 9, 0);
+  let start = Math.max(end - 3, 0);
 
   for (let i = end - 1; i >= start; --i){
     if (!/[\dA-z`~\-_=!@#$%\^\&\*\+\)\(\\\|\]\[\{\}"':;<>,\.\/\?]/.test(value[i])) {

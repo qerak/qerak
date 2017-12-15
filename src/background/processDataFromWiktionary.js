@@ -1,6 +1,15 @@
+const failFrom = `<div class="container">
+  <div class="container__item">
+      <p>Ցավոք ավտոմատ որոնման համակարգը ոչինչ չի գտել, գուցը փորձել ձեռո՞վ գրել բառը
+      <form id="form" class="form">
+          <input id="wiktsearchtext" type="text" class="form__field" placeholder="գրեք հայերեն բառ ^_^ " />
+          <button type="submit" class="btn btn--primary">ՈՐՈՆԵԼ</button>
+      </form>
+  </div>
+</div>`;
 function processDataFromWiktionary(word, callback) {
   const url = "https://hy.wiktionary.org/w/api.php?";
-  let processedData = "Ցավոք չհաջողվեց որևէ բան գտնել ։/";
+  let processedData = failFrom;
   word = findRootWord(word);
   $.getJSON(url, {
     "action": "parse",
@@ -25,7 +34,10 @@ function processDataFromWiktionary(word, callback) {
           i = i - 1;
         }
       }
-      itemDocument.getElementById('Հայերեն').innerText = word;
+      if(itemDocument.getElementById('Հայերեն')) {
+        itemDocument.getElementById('Հայերեն').innerText = word;
+      }
+      
       processedData = itemDocument.body.innerHTML;
     }
     callback(processedData);

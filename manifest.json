@@ -46,5 +46,6 @@
       "tabs",
       "contextMenus",
       "storage"
-    ]
+    ],
+    "web_accessible_resources": ["resources/pin.png"]
   }

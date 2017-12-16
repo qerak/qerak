@@ -33,16 +33,16 @@ const enToHy = {
     "x": ["ղ", "Ղ"],
     "y": ["ը", "Ը"],
     "z": ["զ", "Զ"],
-    "1": ["է", "Է"],
-    "2": ["թ", "Թ"],
-    "3": ["փ", "Փ"],
-    "4": ["ձ", "Ձ"],
-    "5": ["ջ", "Ջ"],
-    "6": ["ւ", "Ւ"],
-    "7": ["և", "և"],
-    "8": ["ր", "Ր"],
-    "9": ["չ", "Չ"],
-    "0": ["ճ", "Ճ"],
+    "1": "է",
+    "2": "թ",
+    "3": "փ",
+    "4": "ձ",
+    "5": "ջ",
+    "6": "ւ",
+    "7": "և",
+    "8": "ր",
+    "9": "չ",
+    "0": "ճ",
     "!": "Է",
     "@": "Թ",
     "#": "Փ",
@@ -79,6 +79,7 @@ const enToHy = {
   convert: function(text) {
     let result = "";
     let j;
+    console.log(isCapsLock || isShiftPressed)
     if(isCapsLock || isShiftPressed){
       j = 1;
     } else {
@@ -86,7 +87,7 @@ const enToHy = {
     } 
     for(let i = 0; i < text.length; i++) {
       if(typeof this["map"][text[i]] === "string") {
-        result += this["map"][text[i]][0];
+        result += this["map"][text[i]];
       } else if(this["map"][text[i].toLowerCase()]) {
         result += this["map"][text[i].toLowerCase()][j];
       }
@@ -97,11 +98,11 @@ const enToHy = {
       return result;
     }
   }
-}
+};
 
 chrome.storage.local.get("enToHyMap", function(obj) {
   if(obj.length !== 0) {
-    enToHy.map = JSON.parse(obj["enToHyMap"]);
+    enToHy.map = JSON.parse(obj.enToHyMap);
   }
 });
 const isContentEditable = function (target) {
@@ -119,7 +120,7 @@ const setCaret = function(target, position){
     selection.removeAllRanges();
     selection.addRange(range);
   }
-}
+};
 
 const getCaret = function(target) {
   if(target.selectionStart !== undefined) {
@@ -132,7 +133,7 @@ const getCaret = function(target) {
     }
   }
   return null;
-}
+};
 
 const getValue = function(target){
   if(target.value !== undefined){
@@ -144,7 +145,7 @@ const getValue = function(target){
     return selection.focusNode.textContent;
   }
   return null;
-}
+};
 
 const setValue = function(target, value){
   if(target.value !== undefined) {
@@ -153,7 +154,7 @@ const setValue = function(target, value){
     const selection = window.getSelection();
     selection.focusNode.textContent = value;
   }
-}
+};
 
 const inputEventHandler = function(e) {
   
@@ -165,7 +166,7 @@ const inputEventHandler = function(e) {
   //START: cases to skip
   if (value === null) {
     return;
-  };
+  }
 
   const end = getCaret(e.target);
   if (end === null){

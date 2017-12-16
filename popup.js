@@ -5,7 +5,7 @@ chrome.storage.local.get('isArmenian', function(item){
 });
 
 chrome.storage.onChanged.addListener(function(changes) {
-  document.getElementById('isArmenian').checked = changes['isArmenian'].newValue;
+  document.getElementById('isArmenian').checked = changes.isArmenian.newValue;
 });
 
 document.getElementById('form').addEventListener("submit", function(event) {

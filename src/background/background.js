@@ -1,5 +1,5 @@
 const contextMenuItem = {
-  "id": "wiktionary",
+  "id": "qerakMenu",
   "title": "Դիտել բառի բացատրությունը",
   "contexts": ["selection"]
 };
@@ -32,16 +32,16 @@ chrome.runtime.onInstalled.addListener(function(details) {
       "x": ["ղ", "Ղ"],
       "y": ["ը", "Ը"],
       "z": ["զ", "Զ"],
-      "1": ["է", "Է"],
-      "2": ["թ", "Թ"],
-      "3": ["փ", "Փ"],
-      "4": ["ձ", "Ձ"],
-      "5": ["ջ", "Ջ"],
-      "6": ["ւ", "Ւ"],
-      "7": ["և", "և"],
-      "8": ["ր", "Ր"],
-      "9": ["չ", "Չ"],
-      "0": ["ճ", "Ճ"],
+      "1": "է",
+      "2": "թ",
+      "3": "փ",
+      "4": "ձ",
+      "5": "ջ",
+      "6": "ւ",
+      "7": "և",
+      "8": "ր",
+      "9": "չ",
+      "0": "ճ",
       "!": "Է",
       "@": "Թ",
       "#": "Փ",
@@ -110,3 +110,27 @@ chrome.storage.onChanged.addListener(function(changes) {
     text: (changes['isArmenian'].newValue) ? "HY" : ""
   });
 });
+
+
+
+
+
+
+
+
+
+// const sendMessage = function(data) {
+//   chrome.tabs.sendMessage(tabs[0].id, data)
+// }
+
+// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+//   sendResponse({
+//     response: data
+//   })
+//   processDataFromWiktionary(message.failBoxValue, function(data) {
+//     sendResponse({
+//       response: data
+//     })
+//   })
+// })
+

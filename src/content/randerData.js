@@ -3,47 +3,35 @@ const boxTemplate = `<div id="HyText-tooltip-wrap" style="left: {{{X}}}px; top: 
 {{{TEXT}}}</div>`;
 let isPined = false;
 const getSelectionCoords = function() {
-  let sel = window.document.selection;
+  let sel = window.getSelection();
   let range;
   let rects;
   let rect;
   let x = 0;
   let y = 0;
-  if (sel) {
-    if (sel.type !== "Control") {
-      range = sel.createRange();
-      range.collapse(true);
-      x = range.boundingLeft;
-      y = range.boundingTop;
+  range = sel.getRangeAt(0).cloneRange();
+  // if (range.getClientRects) {
+  //   range.collapse(true);
+  //   rects = range.getClientRects();
+  //   if (rects.length > 0) {
+  //     rect = rects[0];
+  //   }
+  //   x = rect.left;
+  //   y = rect.top;
+  // }
+  // if (x === 0 && y === 0) {
+    const span = window.document.createElement("span");
+    if (span.getClientRects) {
+      span.appendChild( window.document.createTextNode("\u200b") );
+      range.insertNode(span);
+      rect = span.getClientRects()[0];
+      x = rect.left;
+      y = rect.top;
+      const spanParent = span.parentNode;
+      spanParent.removeChild(span);
+      spanParent.normalize();
     }
-  } else if (window.getSelection) {
-    sel = window.getSelection();
-    if (sel.rangeCount) {
-      range = sel.getRangeAt(0).cloneRange();
-      if (range.getClientRects) {
-        range.collapse(true);
-        rects = range.getClientRects();
-        if (rects.length > 0) {
-          rect = rects[0];
-        }
-        x = rect.left;
-        y = rect.top;
-      }
-      if (x === 0 && y === 0) {
-        var span = window.document.createElement("span");
-        if (span.getClientRects) {
-          span.appendChild( window.document.createTextNode("\u200b") );
-          range.insertNode(span);
-          rect = span.getClientRects()[0];
-          x = rect.left;
-          y = rect.top;
-          var spanParent = span.parentNode;
-          spanParent.removeChild(span);
-          spanParent.normalize();
-        }
-      }
-    }
-  }
+  // }
   scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
   scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   return { x: x + scrollLeft, y: y + scrollTop};
@@ -93,12 +81,22 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// document.getElementsByTagName("body")[0].addEventListener("submit", function(event) {
+//   if(event.target.id === "form") {
+//     event.preventDefault();
+//     chrome.runtime.sendMessage({failBoxValue: document.getElementById('wiktsearchtext').value}, function(response) {
+//       console.log(response)
+//       document.getElementById('output').innerHTML = response.response;
+//     });
+//   }
+// });
+
 const moveElement = function(e){
-  let div = document.getElementById('HyText-tooltip-wrap');
+  const div = document.getElementById('HyText-tooltip-wrap');
   div.style.position = 'absolute';
   div.style.top = (e.clientY-offY) + 'px';
   div.style.left = (e.clientX-offX) + 'px';
-}
+};
 
 document.addEventListener('mousedown', function(e){
   let isInside = false;

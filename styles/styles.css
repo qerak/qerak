@@ -10,7 +10,7 @@
     max-height: 250px;
     min-width: 250px;
     min-height: 200px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 60px 200px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 100px 35px rgba(0,0,0,0.2);
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     background-color: #E7E9E7;

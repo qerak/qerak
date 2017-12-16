@@ -1,12 +1,12 @@
 const failFrom = `<div class="container">
   <div class="container__item">
       <p>Ցավոք ավտոմատ որոնման համակարգը ոչինչ չի գտել, գուցը փորձել ձեռո՞վ գրել բառը
-      <form id="form" class="form">
-          <input id="wiktsearchtext" type="text" class="form__field" placeholder="գրեք հայերեն բառ ^_^ " />
-          <button type="submit" class="btn btn--primary">ՈՐՈՆԵԼ</button>
-      </form>
   </div>
 </div>`;
+{/* <form id="form" class="form">
+<input id="wiktsearchtext" type="text" class="form__field" placeholder="գրեք հայերեն բառ ^_^ " />
+<button type="submit" class="btn btn--primary">ՈՐՈՆԵԼ</button>
+</form> */}
 function processDataFromWiktionary(word, callback) {
   const url = "https://hy.wiktionary.org/w/api.php?";
   let processedData = failFrom;

@@ -2,11 +2,12 @@ const failFrom = `<div class="container">
   <div class="container__item">
       <p>Ցավոք ավտոմատ որոնման համակարգը ոչինչ չի գտել, գուցը փորձել ձեռո՞վ գրել բառը
   </div>
+  <form id="qerak-searchform">
+  <input id="wiktsearchtext" type="text" class="form__field" placeholder="գրեք հայերեն բառ ^_^ " />
+  <button type="submit" class="btn btn--primary">ՈՐՈՆԵԼ</button>
+  </form>
 </div>`;
-{/* <form id="form" class="form">
-<input id="wiktsearchtext" type="text" class="form__field" placeholder="գրեք հայերեն բառ ^_^ " />
-<button type="submit" class="btn btn--primary">ՈՐՈՆԵԼ</button>
-</form> */}
+
 function processDataFromWiktionary(word, callback) {
   const url = "https://hy.wiktionary.org/w/api.php?";
   let processedData = failFrom;
@@ -35,7 +36,7 @@ function processDataFromWiktionary(word, callback) {
         }
       }
       if(itemDocument.getElementById('Հայերեն')) {
-        itemDocument.getElementById('Հայերեն').innerText = word;
+        itemDocument.getElementById('Հայերեն').innerHTML = '<a href="https://hy.wiktionary.org/wiki/' + word + '">' + word + '</a>';
       }
       
       processedData = itemDocument.body.innerHTML;

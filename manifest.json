@@ -29,7 +29,7 @@
   },
   "content_scripts": [{
     "all_frames": false,
-    "js": ["src/content/randerData.js", "src/content/armenianKeyboard.js" ],
+    "js": ["src/content/randerData.js", "src/content/armenianKeyboard.js"],
     "css": ["styles/styles.css"],
     "matches":  ["http://*/*", "https://*/*"],
     "run_at": "document_end"

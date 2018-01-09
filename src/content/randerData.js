@@ -10,16 +10,6 @@ const getSelectionCoords = function() {
   let x = 0;
   let y = 0;
   range = sel.getRangeAt(0).cloneRange();
-  // if (range.getClientRects) {
-  //   range.collapse(true);
-  //   rects = range.getClientRects();
-  //   if (rects.length > 0) {
-  //     rect = rects[0];
-  //   }
-  //   x = rect.left;
-  //   y = rect.top;
-  // }
-  // if (x === 0 && y === 0) {
     const span = window.document.createElement("span");
     if (span.getClientRects) {
       span.appendChild( window.document.createTextNode("\u200b") );
@@ -31,7 +21,6 @@ const getSelectionCoords = function() {
       spanParent.removeChild(span);
       spanParent.normalize();
     }
-  // }
   scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
   scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   return { x: x + scrollLeft, y: y + scrollTop};
@@ -53,6 +42,10 @@ chrome.runtime.onMessage.addListener(
       if(wrap.getBoundingClientRect().right > document.documentElement.clientWidth) {
         wrap.style.left = (parseFloat(wrap.style.left) - wrap.getBoundingClientRect().width) + "px";
       }
+    } else if(document.getElementById('qerak-searchform')) {
+      console.log(54)
+      document.getElementById('HyText-tooltip-wrap').innerHTML = request;
+      chrome.storage.local.set({failBoxValue: 'qerakfailBoxValue'});
     }
   });
 
@@ -81,16 +74,6 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// document.getElementsByTagName("body")[0].addEventListener("submit", function(event) {
-//   if(event.target.id === "form") {
-//     event.preventDefault();
-//     chrome.runtime.sendMessage({failBoxValue: document.getElementById('wiktsearchtext').value}, function(response) {
-//       console.log(response)
-//       document.getElementById('output').innerHTML = response.response;
-//     });
-//   }
-// });
-
 const moveElement = function(e){
   const div = document.getElementById('HyText-tooltip-wrap');
   div.style.position = 'absolute';
@@ -117,3 +100,10 @@ document.addEventListener('mousedown', function(e){
 window.addEventListener('mouseup', function(){
   window.removeEventListener('mousemove', moveElement, true);
 }, false);
+
+document.getElementsByTagName("body")[0].addEventListener("submit", function(event) {
+  if(event.target.id === "qerak-searchform") {
+    event.preventDefault();
+    chrome.storage.local.set({failBoxValue: document.getElementById('wiktsearchtext').value});
+  }
+});

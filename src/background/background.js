@@ -106,31 +106,25 @@ chrome.storage.local.get('isArmenian', function(item){
 });
 
 chrome.storage.onChanged.addListener(function(changes) {
-  chrome.browserAction.setBadgeText({
-    text: (changes['isArmenian'].newValue) ? "HY" : ""
-  });
+  if(changes['isArmenian']) {
+    chrome.browserAction.setBadgeText({
+      text: (changes['isArmenian'].newValue) ? "HY" : ""
+    });
+  }
 });
 
-
-
-
-
-
-
-
-
-// const sendMessage = function(data) {
-//   chrome.tabs.sendMessage(tabs[0].id, data)
-// }
-
-// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-//   sendResponse({
-//     response: data
-//   })
-//   processDataFromWiktionary(message.failBoxValue, function(data) {
-//     sendResponse({
-//       response: data
-//     })
-//   })
-// })
-
+chrome.storage.onChanged.addListener(function(changes) {
+  console.log(575)
+  chrome.storage.local.get('failBoxValue', function(items){
+    if(items.failBoxValue !== 'qerakfailBoxValue') {
+      console.log(55)
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        processDataFromWiktionary(items.failBoxValue, function(processedData) {
+          chrome.tabs.sendMessage(tabs[0].id, processedData, function(response) {
+            //TODO
+          });
+        });
+      });
+    }
+  })
+});

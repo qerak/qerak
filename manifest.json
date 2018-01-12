@@ -39,7 +39,8 @@
         "description": "Միացնել հայերեն ստեղնաշարը",
         "suggested_key": {
           "default": "Alt+H",
-          "mac": "Alt+H"
+          "mac": "Alt+H",
+          "linux": "Alt+Shift+H"
         }
       }
     },

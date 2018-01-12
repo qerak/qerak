@@ -79,12 +79,11 @@ const enToHy = {
   convert: function(text) {
     let result = "";
     let j;
-    console.log(isCapsLock || isShiftPressed)
     if(isCapsLock || isShiftPressed){
       j = 1;
     } else {
       j = 0;
-    } 
+    }
     for(let i = 0; i < text.length; i++) {
       if(typeof this["map"][text[i]] === "string") {
         result += this["map"][text[i]];
@@ -100,11 +99,6 @@ const enToHy = {
   }
 };
 
-chrome.storage.local.get("enToHyMap", function(obj) {
-  if(obj.length !== 0) {
-    enToHy.map = JSON.parse(obj.enToHyMap);
-  }
-});
 const isContentEditable = function (target) {
   return target.contentEditable === "true";
 }
@@ -157,11 +151,11 @@ const setValue = function(target, value){
 };
 
 const inputEventHandler = function(e) {
-  
+
   if(e.inputType === "insertFromPaste" || e.inputType === "deleteContentForward" || e.inputType === "deleteContentBackward") {
     return;
   }
-  
+
   const value = getValue(e.target);
   //START: cases to skip
   if (value === null) {

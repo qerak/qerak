@@ -8,13 +8,12 @@
     "default_icon": "resources/png.png",
     "default_popup": "popup.html"
   },
-  "icons": { 
+  "icons": {
     "16": "resources/png.png",
     "48": "resources/png.png",
-   "128": "resources/png.png" 
+   "128": "resources/png.png"
   },
 
-  "options_page": "options.html",
   "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
 
   "background": {

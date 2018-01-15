@@ -1,0 +1,1 @@
+Հավելավը կարող եք տեղադրել Google Chrome հավելվածը այստեղ https://chrome.google.com/webstore/detail/%D6%84%D5%A5%D6%80%D5%A1%D5%AF/lpmamgpmgojafbpbcgkcicpjbaccekfm

@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Քերակ",
-  "version": "0.0.0.2",
+  "version": "0.0.0.3",
 
-  "description": "Քերակի օգնությամբ դուք կարող եք հեշտությամբ իմանալ հայերեն բառերի մասին տեղեկություններ և ոչ միայն",
+  "description": "«Քերակ» ընդլայնման օգնությամբ Դուք կարող եք հեշտությամբ ճշտել կամ սովորել հայերեն բառերի իմաստները և ոչ միայն:",
   "browser_action": {
     "default_icon": "resources/png.png",
     "default_popup": "popup.html"
@@ -14,7 +14,7 @@
    "128": "resources/png.png"
   },
 
-  "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan"],
+  "author": ["Elen Gabrielyan", "Ashot Janibekyan", "Marianna Perikhanyan", "Rozi Tunyan", "Arman High Foundation"],
 
   "background": {
     "scripts": [
